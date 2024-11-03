@@ -1,21 +1,1501 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700&display=swap');
 
+/* المتغيرات العامة */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --primary-color: #026937;
+  --primary-hover: #015c30;
+  --secondary-color: #f8faf5;
+  --text-color: #333;
+  --gray-light: #f5f5f5;
+  --gray-medium: #666;
+  --border-color: #e5e5e5;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* التنسيقات الأساسية */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Tajawal', sans-serif;
+  color: var(--text-color);
+  line-height: 1.6;
+  background-color: var(--secondary-color);
+}
+
+/* تنسيقات الحاويات */
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+/* تنسيقات القوائم */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  position: relative;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: var(--primary-color);
+}
+
+.nav-menu {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+}
+
+.nav-link {
+  padding: 0.5rem;
+  transition: color 0.2s;
+}
+
+.nav-link:hover {
+  color: var(--primary-color);
+}
+
+/* تنسيقات الأزرار */
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+.btn-outline {
+  background-color: transparent;
+  border: 2px solid var(--primary-color);
+  color: var(--primary-color);
+}
+
+.btn-outline:hover {
+  background-color: var(--primary-color);
+  color: white;
+}
+
+/* تنسيقات خاصة للأزرار في القائمة المنسدلة */
+.nav-menu .btn-outline {
+  border: 2px solid white;
+  color: white;
+}
+
+.nav-menu .btn-outline:hover {
+  background-color: white;
+  color: var(--primary-color);
+}
+
+.nav-menu .btn-primary {
+  background-color: white;
+  color: var(--primary-color);
+  border-color: white;
+}
+
+.nav-menu .btn-primary:hover {
+  background-color: rgba(255, 255, 255, 0.9);
+}
+
+/* تنسيقات خاصة لأزرار النماذج */
+.form-buttons {
+  display: flex;
+  gap: 1rem;
+}
+
+.form-buttons .btn-outline {
+  border: 2px solid var(--primary-color) !important;
+  color: var(--primary-color) !important;
+  background-color: transparent !important;
+}
+
+.form-buttons .btn-outline:hover {
+  background-color: var(--primary-color) !important;
+  color: white !important;
+}
+
+/* تنسيقات خاصة لزر الإلغاء */
+.btn-cancel {
+  border: 2px solid #dc2626 !important;
+  color: #dc2626 !important;
+  background-color: transparent !important;
+}
+
+.btn-cancel:hover {
+  background-color: #dc2626 !important;
+  color: white !important;
+}
+
+/* تنسيقات أزرار الإجراءات في لوحة التحكم */
+.action-buttons .btn {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+}
+
+.edit-button {
+  background-color: #3b82f6;
+  color: white;
+  border: none;
+}
+
+.edit-button:hover {
+  background-color: #2563eb;
+}
+
+.delete-button {
+  background-color: #ef4444;
+  color: white;
+  border: none;
+}
+
+.delete-button:hover {
+  background-color: #dc2626;
+}
+
+/* تنسيقات المحتوى الرئيسي */
+.main-content {
+  padding: 2rem;
+  min-height: calc(100vh - 64px);
+}
+
+/* تنسيقات النماذج */
+.form-group {
+  margin-bottom: 1rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.form-control {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid var(--border-color);
+  border-radius: 0.5rem;
+  font-family: inherit;
+}
+
+/* تنسيقات الجداول */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.table th,
+.table td {
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  text-align: right;
+}
+
+.table th {
+  background-color: var(--gray-light);
+  font-weight: 600;
+}
+
+/* تنسيقات لوحة التحكم */
+.admin-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.5rem;
+}
+
+.admin-header {
+  background: white;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  margin-bottom: 1rem;
+}
+
+.admin-search {
+  width: 200px;
+}
+
+.admin-search input {
+  width: 100%;
+  padding: 0.4rem 1.8rem 0.4rem 0.8rem;
+  border: 1px solid #e5e7eb;
+  border-radius: 0.4rem;
+  font-size: 0.8rem;
+}
+
+.admin-search-icon {
+  width: 0.8rem;
+  height: 0.8rem;
+  right: 0.5rem;
+}
+
+.admin-add-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+  white-space: nowrap;
+  min-width: fit-content;
+}
+
+.admin-add-button:hover {
+  background-color: var(--primary-hover);
+}
+
+.admin-add-button svg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.admin-table {
+  overflow-x: auto;
+}
+
+.admin-table th {
+  background: #f9fafb;
+  padding: 1rem;
+  font-weight: 600;
+  color: #374151;
+}
+
+.admin-table td {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.admin-table tr:hover {
+  background: #f9fafb;
+}
+
+.type-badge {
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-start;
+}
+
+.edit-button {
+  background-color: #3b82f6;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.edit-button:hover {
+  background-color: #2563eb;
+}
+
+.delete-button {
+  background-color: #ef4444;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 0.375rem;
+  font-size: 0.875rem;
+  transition: all 0.2s;
+}
+
+.delete-button:hover {
+  background-color: #dc2626;
+}
+
+/* تنسيقات خاصة للموبايل */
+@media (max-width: 768px) {
+  .admin-container {
+    padding: 0.5rem;
+  }
+
+  .admin-header {
+    padding: 0.75rem;
+  }
+
+  .admin-header .flex {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+
+  .admin-header > div {
+    width: 100%;
+  }
+
+  .admin-header .flex > div:last-child {
+    display: flex;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .admin-search {
+    flex: 1;
+    min-width: 120px;
+    max-width: none;
+  }
+
+  .admin-add-button {
+    padding: 0.4rem 0.8rem;
+    font-size: 0.8rem;
+  }
+
+  .admin-table {
+    margin-top: 0.5rem;
+    border-radius: 0.375rem;
+    overflow: hidden;
+  }
+
+  .admin-table th,
+  .admin-table td {
+    padding: 0.75rem 0.5rem;
+    font-size: 0.875rem;
+  }
+
+  .action-buttons {
+    display: flex;
+    flex-direction: row;
+    gap: 0.25rem;
+  }
+
+  .edit-button,
+  .delete-button {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.75rem;
+    white-space: nowrap;
+  }
+
+  /* تحسين عرض المحتوى على الموبايل */
+  .content-cell {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  .content-title {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+
+  .content-meta {
+    font-size: 0.75rem;
+    color: #666;
+  }
+}
+
+/* تنسيقات الصفحة الرئيسية */
+.hero-section {
+  min-height: calc(100vh - 64px);
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('/school-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: white;
+  padding: 2rem;
+}
+
+.hero-content {
+  max-width: 800px;
+}
+
+.hero-title {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.hero-subtitle {
+  font-size: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.hero-buttons {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+}
+
+.features-section {
+  padding: 4rem 2rem;
+  background: white;
+}
+
+.section-title {
+  text-align: center;
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 3rem;
+  color: var(--primary-color);
+}
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.feature-card {
+  text-align: center;
+  padding: 2rem;
+  background: white;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.feature-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.stats-section {
+  background: var(--primary-color);
+  color: white;
+  padding: 4rem 2rem;
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.stat-item h4 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.news-section {
+  padding: 4rem 2rem;
+  background: var(--secondary-color);
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.news-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.news-type {
+  color: var(--primary-color);
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+/* تنسيقات الموبايل */
+@media (max-width: 768px) {
+  .mobile-menu-button {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    padding: 1rem;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .nav-auth {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .auth-buttons {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .hero-title {
+    font-size: 2.5rem;
+  }
+
+  .hero-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .hero-buttons {
+    flex-direction: column;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+}
+
+/* تحديث تنسيقات Navbar */
+.navbar {
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 0;
+  position: relative;
+}
+
+/* زر القائمة للموبايل */
+.menu-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+  z-index: 100;
+}
+
+.hamburger {
+  display: block;
+  width: 24px;
+  height: 2px;
+  background: var(--primary-color);
+  position: relative;
+  transition: all 0.3s;
+}
+
+.hamburger::before,
+.hamburger::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 2px;
+  background: var(--primary-color);
+  transition: all 0.3s;
+}
+
+.hamburger::before {
+  top: -6px;
+}
+
+.hamburger::after {
+  bottom: -6px;
+}
+
+/* حالة القائمة المفتوحة */
+.hamburger.active {
+  background: transparent;
+}
+
+.hamburger.active::before {
+  transform: rotate(45deg);
+  top: 0;
+}
+
+.hamburger.active::after {
+  transform: rotate(-45deg);
+  bottom: 0;
+}
+
+/* تنسيقات الموبايل */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  .nav-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    background: white;
+    padding: 6rem 1rem 2rem;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    overflow-y: auto;
+    z-index: 50;
+  }
+
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 100%;
+  }
+
+  .nav-link {
+    font-size: 1.5rem;
+    padding: 1rem;
+    width: 100%;
+    text-align: center;
+    border-bottom: 1px solid #eee;
+  }
+
+  .nav-auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    width: 100%;
+    padding-top: 2rem;
+  }
+
+  .auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+    padding: 1rem;
+    font-size: 1.2rem;
+  }
+
+  .user-name {
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+
+  /* تحسين زر القائمة */
+  .menu-toggle {
+    position: relative;
+    z-index: 100;
+    padding: 1rem;
+    margin: -1rem;
+  }
+
+  .hamburger, 
+  .hamburger::before, 
+  .hamburger::after {
+    width: 30px;
+    height: 3px;
+  }
+
+  .hamburger::before {
+    top: -8px;
+  }
+
+  .hamburger::after {
+    bottom: -8px;
+  }
+}
+
+/* تنسيقات الشاشات الكبيرة */
+@media (min-width: 769px) {
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2rem;
+  }
+
+  .nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .auth-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+}
+
+/* تحديث تنيقات القائمة المنسدلة للموبايل */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+    position: relative;
+    z-index: 1000;
+    padding: 1rem;
+  }
+
+  .nav-menu {
+    display: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    width: 100vw;
+    height: 100vh;
+    background: var(--primary-color);
+    padding: 6rem 2rem;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+    overflow-y: auto;
+    z-index: 99;
+  }
+
+  .nav-menu.show {
+    display: flex;
+  }
+
+  .nav-links {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2.5rem;
+    width: 90%;
+    max-width: 400px;
+  }
+
+  .nav-link {
+    font-size: 2rem;
+    padding: 1rem 2rem;
+    width: 100%;
+    text-align: center;
+    color: white;
+    font-weight: 500;
+    border-radius: 10px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .nav-link:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: white;
+    transform: scale(1.02);
+  }
+
+  .nav-auth {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    width: 90%;
+    max-width: 400px;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .auth-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .btn {
+    width: 100%;
+    text-align: center;
+    padding: 1.2rem;
+    font-size: 1.5rem;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border: 2px solid var(--primary-color);
+  }
+
+  .btn-primary {
+    background: white;
+    color: var(--primary-color);
+    border-color: white;
+  }
+
+  .btn-primary:hover {
+    background: rgba(255, 255, 255, 0.9);
+    transform: translateY(-2px);
+  }
+
+  .btn-outline {
+    border: 2px solid white;
+    color: white;
+  }
+
+  .btn-outline:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+  }
+
+  .user-name {
+    font-size: 1.8rem;
+    color: white;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
+    text-align: center;
+  }
+
+  /* تحسين زر القائمة */
+  .hamburger, 
+  .hamburger::before, 
+  .hamburger::after {
+    width: 35px;
+    height: 3px;
+  }
+
+  .hamburger::before {
+    top: -12px;
+  }
+
+  .hamburger::after {
+    bottom: -12px;
+  }
+
+  /* تحسين المسافات في القائمة المفوحة */
+  .nav-menu.show {
+    padding-top: 8rem;
+  }
+
+  /* تأثيرات إضافية */
+  .nav-link, .btn {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .nav-link:after, .btn:after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: rgba(255, 255, 255, 0.3);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-link:hover:after, .btn:hover:after {
+    transform: scaleX(1);
+  }
+}
+
+/* تحسين تنسيقات الشاشات الكبيرة */
+@media (min-width: 769px) {
+  .nav-menu {
+    display: flex;
+    align-items: center;
+    gap: 3rem;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+  }
+
+  .nav-link {
+    position: relative;
+    padding: 0.5rem;
+    font-weight: 500;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--primary-color);
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-link:hover::after {
+    transform: scaleX(1);
+  }
+
+  .nav-auth {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .auth-buttons {
+    display: flex;
+    gap: 1rem;
+  }
+
+  .btn {
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+  }
+
+  .btn:hover {
+    transform: translateY(-2px);
+  }
+}
+
+/* تحديث تنسيقات زر القائمة للموبايل */
+@media (max-width: 768px) {
+  /* ... الكود السابق ... */
+
+  /* تحسين زر القائمة عندما تكون القائمة مفتوحة */
+  .nav-menu.show ~ .menu-toggle .hamburger,
+  .nav-menu.show ~ .menu-toggle .hamburger::before,
+  .nav-menu.show ~ .menu-toggle .hamburger::after {
+    background: white;
+  }
+
+  /* تحسين زر القائمة */
+  .menu-toggle {
+    display: block;
+    position: relative;
+    z-index: 1000;
+    padding: 1rem;
+  }
+
+  .hamburger, 
+  .hamburger::before, 
+  .hamburger::after {
+    width: 35px;
+    height: 3px;
+    background: var(--primary-color);
+    transition: all 0.3s ease;
+  }
+
+  /* حالة القائمة المفتوحة */
+  .hamburger.active {
+    background: transparent !important;
+  }
+
+  .hamburger.active::before,
+  .hamburger.active::after {
+    background: white !important;
+  }
+
+  .hamburger.active::before {
+    transform: rotate(45deg);
+    top: 0;
+  }
+
+  .hamburger.active::after {
+    transform: rotate(-45deg);
+    bottom: 0;
+  }
+}
+
+/* تنسيقات أساسية للروابط والأزرار */
+a, button {
+  text-decoration: none !important;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.nav-link::after,
+.nav-link:hover::after,
+.btn::after,
+.btn:hover::after {
+  display: none !important;
+}
+
+/* إضافة هذه التنسيقات في نهاية الملف */
+
+/* تنسيقات صفحة الاتصال */
+.contact-page {
+  min-height: calc(100vh - 64px);
+}
+
+.contact-hero {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/contact-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 4rem 2rem;
+}
+
+.contact-title {
+  font-size: 3rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.contact-subtitle {
+  font-size: 1.5rem;
+  opacity: 0.9;
+}
+
+.contact-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: -3rem auto 0;
+  padding: 0 2rem;
+}
+
+.contact-form-container {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.contact-info {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.5rem;
+}
+
+.info-card {
+  background: white;
+  padding: 1.5rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.info-icon {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.success-message {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: #dcfce7;
+  color: #166534;
+  border-radius: 0.5rem;
+  text-align: center;
+}
+
+/* تنسيقات صفحة عن المدرسة */
+.about-page {
+  min-height: calc(100vh - 64px);
+}
+
+.about-hero {
+  background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('/images/about-bg.jpg');
+  background-size: cover;
+  background-position: center;
+  color: white;
+  text-align: center;
+  padding: 6rem 2rem;
+}
+
+.about-hero h1 {
+  font-size: 3.5rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.about-content {
+  max-width: 1200px;
+  margin: -3rem auto 0;
+  padding: 0 2rem;
+}
+
+.vision-mission {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 4rem;
+}
+
+.vision, .mission {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.values-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.value-card {
+  background: white;
+  padding: 2rem;
+  border-radius: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  transition: transform 0.3s ease;
+}
+
+.value-card:hover {
+  transform: translateY(-5px);
+}
+
+.value-icon {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.facilities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.facility-card {
+  background: white;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+.facility-image {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.facility-card h3 {
+  padding: 1rem;
+  margin: 0;
+}
+
+.facility-card p {
+  padding: 0 1rem 1rem;
+  color: #666;
+}
+
+/* تنسيقات الموبايل */
+@media (max-width: 768px) {
+  .contact-content {
+    grid-template-columns: 1fr;
+  }
+
+  .vision-mission {
+    grid-template-columns: 1fr;
+  }
+
+  .contact-title {
+    font-size: 2rem;
+  }
+
+  .contact-subtitle {
+    font-size: 1.2rem;
+  }
+
+  .about-hero h1 {
+    font-size: 2.5rem;
+  }
+}
+
+.button {
+  margin: 0.5rem;  /* مسافة متساوية من جميع الجهات */
+  padding: 0.75rem 1.5rem;
+  border: 2px solid #22c55e;  /* حدود خضراء */
+  border-radius: 0.375rem;
+  color: #22c55e;  /* لون النص أخضر قبل الضغط */
+  background-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.button:hover {
+  background-color: #22c55e;  /* خلفية خضراء عند الضغط */
+  color: white;  /* لون النص أبيض عند الضغط */
+}
+
+/* تنسيقات صفحات تسجيل الدخول وإنشاء الحساب */
+.auth-container {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+  background: linear-gradient(135deg, #f0f7ff 0%, #ffffff 100%);
+}
+
+.auth-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 5px;
+  background: linear-gradient(90deg, var(--primary-color), #34d399);
+}
+
+.auth-logo {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 2rem;
+  object-fit: contain;
+}
+
+.auth-title {
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-bottom: 0.75rem;
+}
+
+.auth-subtitle {
+  color: #666;
+  margin-bottom: 2.5rem;
+  font-size: 1.1rem;
+}
+
+.auth-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  text-align: right;
+  position: relative;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+  color: var(--text-color);
+  font-size: 1.1rem;
+}
+
+.form-control {
+  width: 100%;
+  padding: 1rem 1.25rem;
+  border: 2px solid #e5e7eb;
+  border-radius: 12px;
+  font-family: inherit;
+  font-size: 1.1rem;
+  transition: all 0.3s ease;
+  background-color: #f8fafc;
+}
+
+.form-control:focus {
+  outline: none;
+  border-color: var(--primary-color);
+  background-color: white;
+  box-shadow: 0 0 0 4px rgba(2, 105, 55, 0.1);
+}
+
+.auth-button {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 1rem;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.auth-button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(2, 105, 55, 0.2);
+}
+
+.auth-button:active {
+  transform: translateY(0);
+}
+
+.auth-footer {
+  margin-top: 2.5rem;
+  color: #666;
+  font-size: 1.1rem;
+}
+
+.auth-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  margin-right: 0.5rem;
+  transition: all 0.3s ease;
+}
+
+.auth-link:hover {
+  color: var(--primary-hover);
+  text-decoration: none;
+}
+
+.auth-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 2rem 0;
+  color: #666;
+}
+
+.auth-divider::before,
+.auth-divider::after {
+  content: '';
+  flex: 1;
+  border-bottom: 2px solid #e5e7eb;
+}
+
+.auth-divider span {
+  padding: 0 1.5rem;
+  font-weight: 500;
+}
+
+/* تحسينات إضافية */
+.form-control::placeholder {
+  color: #94a3b8;
+}
+
+.form-group.error .form-control {
+  border-color: #ef4444;
+  background-color: #fef2f2;
+}
+
+.form-group.error .error-message {
+  color: #ef4444;
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+}
+
+/* تنسيقات الموبايل */
+@media (max-width: 768px) {
+  .auth-container {
+    padding: 1.5rem;
+  }
+
+  .auth-card {
+    padding: 2rem;
+  }
+
+  .auth-title {
+    font-size: 1.8rem;
+  }
+
+  .auth-subtitle {
+    font-size: 1rem;
+  }
+
+  .auth-logo {
+    width: 80px;
+    height: 80px;
+    margin-bottom: 1.5rem;
+  }
+
+  .form-control {
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+  }
+
+  .auth-button {
+    padding: 0.875rem;
+    font-size: 1rem;
+  }
+}
+
+.captcha-container {
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+}
+
+.error-message {
+  background-color: #fee2e2;
+  color: #dc2626;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
+}
+
+.success-message {
+  background-color: #dcfce7;
+  color: #166534;
+  padding: 0.75rem;
+  border-radius: 0.5rem;
+  font-size: 0.875rem;
 }
